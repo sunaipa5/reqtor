@@ -2,6 +2,7 @@ package reqtor
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"os/exec"
@@ -35,7 +36,7 @@ func Stop() error {
 	return nil
 }
 
-func Request(requestType string, requestAdress string, requestHeaders map[string]string) (*http.Response, error) {
+func Request(requestType string, requestUrl string, requestHeaders map[string]string) (*http.Response, error) {
 	if AutoStart {
 		Start()
 	}
@@ -48,7 +49,7 @@ func Request(requestType string, requestAdress string, requestHeaders map[string
 
 	torTransport := &http.Transport{Proxy: http.ProxyURL(torProxyUrl)}
 
-	req, err := http.NewRequest(requestType, requestAdress, nil)
+	req, err := http.NewRequest(requestType, requestUrl, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -96,4 +97,17 @@ func Post(requestUrl string, requestHeaders map[string]string) (*http.Response, 
 		return nil, err
 	}
 	return response, nil
+}
+
+func GetBody(requestUrl string, requestHeaders map[string]string) ([]byte, error) {
+	response, err := Request("GET", requestUrl, requestHeaders)
+	if err != nil {
+		return nil, err
+	}
+	body, err := io.ReadAll(response.Body)
+	if err != nil {
+		return nil, err
+	}
+	CloseResponse(response)
+	return body, nil
 }
