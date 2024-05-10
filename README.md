@@ -3,7 +3,7 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/sunaipa5/reqtor.svg)](https://pkg.go.dev/github.com/sunaipa5/reqtor)
 
-## Prerequisites
+## Prerequirement 
 In order to use the AutoStart and AutoStop features, the ``tor`` cli tool is required and must be added to bash, AutoStart and AutoStop features are on by default.
 
 ## Sample Request
