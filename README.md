@@ -2,15 +2,10 @@
 # Reqtor
 [![Go Reference](https://pkg.go.dev/badge/github.com/sunaipa5/reqtor.svg)](https://pkg.go.dev/github.com/sunaipa5/reqtor)
 
-<<<<<<< HEAD
 Go library for sending http requests through Tor proxy or any proxy
 
 ## Requirements
 In order to use the Start, Stop Functions and AutoStart, AutoStop features, the `tor` cli tool must be added to the environment variables, the proxy is set to `socks5://127.0.0.1:9050` by default, you can change the proxy settings as you wish. 
-=======
-## Prerequirement 
-In order to use the AutoStart and AutoStop features, the ``tor`` cli tool is required and must be added to bash, AutoStart and AutoStop features are on by default.
->>>>>>> 74a45ceaea0892131a3129133a484a712eb6565c
 
 ## Sample Request
 
