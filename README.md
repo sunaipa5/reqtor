@@ -7,7 +7,7 @@ Go library for sending http requests through Tor proxy or any proxy
 ## Requirements
 In order to use the Start, Stop Functions and AutoStart, AutoStop features, the `tor` cli tool must be added to the environment variables, the proxy is set to `socks5://127.0.0.1:9050` by default, you can change the proxy settings as you wish. 
 
-## Sample Request
+## Sample Get Request
 
 ```go
 package main
