@@ -62,7 +62,7 @@ func Stop() error {
 	return nil
 }
 
-func Request(requestType string, requestUrl string, requestHeaders map[string]string, requestBody map[string]string) (*http.Response, error) {
+func Request(requestType string, requestUrl string, requestHeaders map[string]string, requestBody map[string]interface{}) (*http.Response, error) {
 	var startTime time.Time
 	if AutoStart {
 		Start()
@@ -158,7 +158,7 @@ func Get(requestUrl string, requestHeaders map[string]string) (*http.Response, e
 }
 
 // POST - Request
-func Post(requestUrl string, requestHeaders map[string]string, requestBody map[string]string) (*http.Response, error) {
+func Post(requestUrl string, requestHeaders map[string]string, requestBody map[string]interface{}) (*http.Response, error) {
 	response, err := Request("POST", requestUrl, requestHeaders, requestBody)
 	if err != nil {
 		if Debugger {
@@ -196,7 +196,7 @@ func GetBody(requestUrl string, requestHeaders map[string]string) ([]byte, error
 }
 
 // This Function Returns the POST request body
-func PostBody(requestUrl string, requestHeaders map[string]string, requestBody map[string]string) ([]byte, error) {
+func PostBody(requestUrl string, requestHeaders map[string]string, requestBody map[string]interface{}) ([]byte, error) {
 	response, err := Request("POST", requestUrl, requestHeaders, requestBody)
 	if err != nil {
 		if Debugger {

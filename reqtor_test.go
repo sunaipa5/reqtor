@@ -13,7 +13,7 @@ var RequestHeaders = map[string]string{
 	"Cookie":          "test_cookie=cookie_value; test_cookie2=cookie_value2",
 }
 
-var PostData = map[string]string{
+var PostData = map[string]interface{}{
 	"name":     "john",
 	"surename": "doe",
 	"age":      "24",
