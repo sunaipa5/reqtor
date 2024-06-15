@@ -9,6 +9,8 @@ import (
 	"net/url"
 	"os/exec"
 	"time"
+	"runtime"
+	"syscall"
 )
 
 var (
@@ -27,6 +29,9 @@ func Start() error {
 		logger(false, false, "Start S1", "TOR Starting...")
 	}
 	torCmd = exec.Command("tor")
+	if runtime.GOOS == "windows"{
+		torCmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	}
 	err := torCmd.Start()
 	if err != nil {
 		logger(true, false, "Start E1", err.Error())
